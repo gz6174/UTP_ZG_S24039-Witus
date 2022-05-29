@@ -1,6 +1,6 @@
 /**
  *
- *  @author Zalewski Grzegorz S24039
+ *  @author Bajorek Mikołaj S24056
  *
  */
 
@@ -14,17 +14,22 @@ public class Main {
 
   public static void main(String[] args) {
     File dataDir = new File("data");
+
     TravelData travelData = new TravelData(dataDir);
     String dateFormat = "yyyy-MM-dd";
-    for (String locale : Arrays.asList("pl_PL", "en_GB")) {
+    for (String locale : Arrays.asList("pl_PL", "en_GB"))
+    {
       List<String> odlist = travelData.getOffersDescriptionsList(locale, dateFormat);
       for (String od : odlist) System.out.println(od);
     }
     // --- część bazodanowa
-    String url = /*<-- tu należy wpisać URL bazy danych */
+
+    String url = "jdbc:mysql://localhost:3306/mysql?zeroDateTimeBehavior=convertToNull";
     Database db = new Database(url, travelData);
+    /*
     db.create();
     db.showGui();
+    */
   }
 
 }
